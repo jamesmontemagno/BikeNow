@@ -1,4 +1,4 @@
-# ![](https://raw.githubusercontent.com/jamesmontemagno/BikeNow/master/NewIcons/ic_launcher%20(5)/res/drawable-xxxhdpi/ic_launcher.png) Bike Now
+# ![](https://raw.githubusercontent.com/jamesmontemagno/BikeNow/master/NewIcons/ic_launcher%20(5)/res/drawable-xxhdpi/ic_launcher.png) [Bike Now](http://www.bikenowapp.com)
 
 Bike Now is an Android application built with [Xamarin.Android](http://xamarin.com/platform) to visualize Seattles's [Pronto Cycle Share](http://prontocycleshare.com/) bike sharing system.
 
