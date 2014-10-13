@@ -1,0 +1,30 @@
+{
+var stationIcon=ed.Map.inServiceImage;
+if(station.st==2)
+{
+	if(station.bk)
+	{
+	stationIcon=ed.Map.plannedDispenserImage
+	}
+	else
+	{
+		stationIcon=ed.Map.plannedImage
+	}
+	ed.Map.plannedMarker.push(ed.Map.createPlannedMarker(station,stationIcon))
+}
+else if(station.t||station.b||station.ba==0&&station.da==0)
+{
+	if(station.bk)
+	{
+		stationIcon=ed.Map.outOfServiceDispenserImage
+	}
+	else
+	{
+		stationIcon=ed.Map.outOfServiceImage
+	}
+	
+	ed.Map.outOfServiceMarker.push(ed.Map.createOutOfServiceMarker(station,stationIcon))
+}
+else
+{
+if(station.bk){ed.Map.docksMarker.push(ed.Map.createNumberMarker(station,ed.Map.docksDispenserImage,station.da));

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <FrameLayout
+        android:background="@drawable/flash_bar_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="64dp"
+        android:alpha="0"
+        android:visibility="gone"
+        android:id="@+id/FlashBarLayout"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+        <TextView
+            android:text="Loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff2f2f2"
+            android:layout_gravity="center"
+            android:id="@+id/FlashBarText"
+            android:textSize="14sp" />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/UpdateTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:textColor="#333333"
+        android:paddingTop="4dp"
+        android:layout_marginRight="4dp"
+        android:shadowColor="#eeeeee"
+        android:shadowDx="0"
+        android:shadowDy="1"
+        android:shadowRadius="0.1"
+        android:textSize="8sp" />
+    <include
+        layout="@layout/InfoPaneLayout" />
+</FrameLayout>

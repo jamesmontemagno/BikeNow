@@ -1,0 +1,149 @@
+/* Space out content a bit */
+body {
+  padding-bottom: 15px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 1033px) {
+  .container {
+    max-width: 995px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 75px;
+}
+
+#promo_btns {
+	margin-top: 2em;
+	padding-bottom: 90px;
+}
+
+#promo_btns a img {
+	display: inline-block;
+	width: 40%;
+	max-width: 172px;
+}
+
+#promo_btns a {
+	margin-right: 20px;
+}
+
+img.screenshot {
+	width: 32%
+}
+
+span.hubway {
+	color: #6bc433;
+}
+
+#features {
+	padding-top: 50px;
+	margin-top: 0;
+}
+
+#features-container {
+	width: 90%;
+	margin: auto;
+	margin-bottom: 2em;
+}
+
+#features-container h2 {
+	font-size: 175%;
+	margin-top:1.2em;
+	margin-bottom: 1em;
+}
+
+#features-container .speech {
+	padding-top: 1em;
+}
+
+#features-container h2.odd {
+	text-align: right;
+}
+
+.feature a img {
+	width: 100%;
+	max-width: 140px;
+}
+
+.modal-body img {
+	display:block;
+	width:300px;
+	margin:auto;
+}
+
+body.modal-open, .modal-open .navbar-fixed-top {
+	margin-right: 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (max-width: 990px) {
+
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .jumbotron {
+    border-bottom: 0;
+  }
+
+  #features-container h2.odd {
+	text-align: left;
+  }
+
+  .jumbotron img {
+	  float: none !important;
+  }
+
+  img.toggle-visible {
+	  display: none;
+	  visibility: hidden;
+  }
+
+  #features-container h2 {
+	  font-size: 175%;
+	  margin-top: 1.2em;
+	  margin-bottom: 0;
+  }
+
+  #features {
+	  padding-top: 0;
+  }
+
+  #promo_btns {
+	  padding-bottom: 0;
+  }
+
+  img.screenshot {
+	  width: 50%;
+	  max-width: 238px;
+  }
+}

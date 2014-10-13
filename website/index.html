@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The best Pronto Cycle Seattle Bike Share experience on Android!">
+    <meta name="author" content="J">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <title>Bike Now for Seattle's Pronto Cycle</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target="#navitems">
+    <div class="container" itemscope itemtype="http://schema.org/MobileApplication">
+      <div class="header">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="#"><span itemprop="name">Bike Now</span></a>
+		  </div>
+
+		  <div id="navitems" class="collapse navbar-collapse navbar-right">
+			<ul class="nav navbar-nav nav-pills">
+			  <li class="active"><a href="#about">About</a></li>
+			  <li><a href="#features">Features</a></li>
+			</ul>
+		  </div>
+		</nav>
+      </div>
+
+      <div class="jumbotron" id="about">
+		<img alt="Moyeu screenshot" src="img/device-frame2.png" class="pull-left screenshot" itemprop="screenshot" />
+        <h1><span class="hubway">Pronto Cycle</span> with style on <img src="img/android_robot.png" alt="Android logo" style="height: 3ex; max-height: 96px" /></h1>
+        <p class="lead" itemprop="description">Bike Now is the best way to enjoy Seattle's bike sharing system.<br />Packed with tons of features and a modern Android interface, you will feel right at home.</p>
+        <p id="promo_btns">
+		  <a href="https://play.google.com/store/apps/details?id=com.refractored.bikenowpronto" itemprop="installUrl">
+			<img alt="Get it on Google Play" src="img/en_generic_rgb_wo_60.png" />
+		  </a>
+		  <a href="https://github.com/jamesmontemagno/BikeNow">
+			<img alt="Code on GitHub" src="img/btn_github.png" />
+		  </a>
+		</p>
+      </div>
+
+	  <div id="features" class="page-header"><h1>Features</h1></div>
+	  <div id="features-container">
+		<h2>Pronto at a Glance</h2>
+		<div class="feature row">
+		  <a data-toggle="modal" href="#gmapsLightbox" class="col-md-2"><img src="img/features/gmapsv2-small.png" class="toggle-visible" /></a>
+		  <div class="modal fade" id="gmapsLightbox" tabindex="-1" role="dialog" aria-labelledby="gmapsLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-body">
+				  <img src="img/features/gmapsv2-med.png" />
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="speech col-md-10">
+			<p class="lead">Visualize the entire Pronto Cycle network in real time.</p>
+			<p class="lead">Station pins will display the amount of bikes remaining using quick color feedback.</p>
+		  </div>
+		</div>
+		
+		<h2 class="odd">Rich Station Information</h2>
+		<div class="feature row">
+		  <div class="speech col-md-10">
+			<p class="lead">Individual station information is concisely presented with live availability of bikes and racks.</p>
+			<p class="lead">Google Street View preview will help you pinpoint the location of each station with its surrounding environment. You can also open the station right into the Google Maps application (or other compatible apps) for further processing.</p>
+		  </div>
+		  <a data-toggle="modal" href="#richInfosLightbox" class="col-md-2"><img src="img/features/richinfos-small.png" class="toggle-visible" /></a>
+		  <div class="modal fade" id="richInfosLightbox" tabindex="-1" role="dialog" aria-labelledby="richInfosLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-body">
+				  <img src="img/features/richinfos-med.png" />
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<h2>See What's Around</h2>
+		<div class="feature row">
+		  <a data-toggle="modal" href="#aroundLightbox" class="col-md-2"><img src="img/features/around-small.png" class="toggle-visible" /></a>
+		  <div class="modal fade" id="aroundLightbox" tabindex="-1" role="dialog" aria-labelledby="aroundLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-body">
+				  <img src="img/features/around-med.png" />
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="speech col-md-10">
+			<p class="lead">Ever been to your favorite station to drop your bike just to find it full?</p>
+			<p class="lead">Worry no more! Stations closest to you are automatically displayed in the app menu so that you can quickly find an alternate location.</p>
+		  </div>
+		</div>
+
+		<h2 class="odd">You've Got Favorites</h2>
+		<div class="feature row">
+		  <div class="speech col-md-10">
+			<p class="lead">You can add stations to your favorites list right from the station information. They can then be accessed from the menu into a summary view containing all the relevant data for each of them.</p>
+		  </div>
+		  <a data-toggle="modal" href="#favsLightbox" class="col-md-2"><img src="img/features/favorites-small.png" class="toggle-visible" /></a>
+		  <div class="modal fade" id="favsLightbox" tabindex="-1" role="dialog" aria-labelledby="favsLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-body">
+				  <img src="img/features/favorites-med.png" />
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<h2>Inspired by the wonderful Moyeu</h2>
+		<div class="feature row">
+		  <a data-toggle="modal" href="#rentalsLightbox" class="col-md-2"><img src="img/features/rentals-small.png" class="toggle-visible" /></a>
+		  <div class="modal fade" id="rentalsLightbox" tabindex="-1" role="dialog" aria-labelledby="rentalsLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-body">
+				  <img src="img/features/rentals-med.png" />
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="speech col-md-10">
+			<p class="lead">Bike Now was inspired by -and could not not have been made without- the help of <a href="http://twitter.com/jeremie_laval">Jérémie Laval</a> and his wonderful companion for Boston's Hubway, <a href="http://moyeuapp.net">Moyeu.</a></p>
+			<p class="lead">If you are in the Boston area be sure to download Moyeu for free on Google Play.</p>
+		  </div>
+		</div>
+
+		<h2 class="odd">Free and Open-Source Software</h2>
+		<div class="feature row">
+		  <div class="speech col-md-10">
+			<p class="lead">The entire Bike Now source code is <a href="https://github.com/jamesmontemagno/BikeNow">available on GitHub</a> under the open-source Apache 2 license. Since Bike Now uses the <a href="http://xamarin.com">Xamarin</a> platform, it's a good playground to build your own apps.</p>
+		  </div>
+		  <img class="col-md-2 toggle-visible" src="img/features/foss.png" style="max-width: 150px" />
+		</div>
+	  </div>
+
+      <div class="footer">
+        <p>&copy; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="givenName">James</span> <span itemprop="familyName">Montemagno</span></p>
+      </div>
+
+    </div> <!-- /container -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	  $(function() {
+	  $('a[href*=#]:not([href=#]):not([data-toggle])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+      || location.hostname == this.hostname) {
+
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+      $('html,body').animate({
+      scrollTop: target.offset().top
+      }, 350);
+      return false;
+      }
+      }
+	  });
+	  });
+	</script>
+  </body>
+</html>
