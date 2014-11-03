@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Moyeu.Pronto;
+using Android.App;
+using Android.Widget;
 
 namespace Moyeu
 {
 	public class Hubway : IObservable<Station[]>
 	{
-		const string HubwayApiEndpoint = "https://secure.prontocycleshare.com/data2/stations.json";
+		const string HubwayApiEndpoint = "http://secure.prontocycleshare.com/data2/stations.json";
 
 		public static readonly Func<Station, bool> AvailableBikeStationPredicate = s => s.BikeCount > 1 && s.EmptySlotCount > 1;
 
@@ -30,6 +32,7 @@ namespace Moyeu
 		public Hubway (TimeSpan freshnessTimeout)
 		{
 			this.freshnessTimeout = freshnessTimeout;
+			client.Timeout = TimeSpan.FromSeconds (30);
 		}
 
 		public DateTime LastUpdateTime {
@@ -78,20 +81,29 @@ namespace Moyeu
 				return savedData != null && DateTime.Now < (LastUpdateTime + freshnessTimeout);
 			}
 		}
-
+		int attempt = 0;
 		public async Task<Station[]> GetStations (bool forceRefresh = false, Action<string> dataCacher = null)
 		{
 			string data = null;
 
+			if (forceRefresh)
+				attempt = 0;
+
 			if (HasCachedData && !forceRefresh)
 				data = savedData;
 			else {
+				attempt++;
 				while (data == null) {
 					try {
 						data = await client.GetStringAsync (HubwayApiEndpoint).ConfigureAwait (false);
+						attempt = 0;
 					} catch (Exception e) {
 						Android.Util.Log.Error ("HubwayDownloader", e.ToString ());
 						Xamarin.Insights.Report (e);
+						if (attempt >= 3) {
+							attempt = 0;
+							return new Station[]{ };
+						}
 					}
 					if (data == null)
 						await Task.Delay (500);

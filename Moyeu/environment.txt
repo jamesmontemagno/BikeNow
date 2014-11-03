@@ -1,1 +1,1 @@
-﻿MONO_GC_PARAMS=bridge-implementation=tarjan
+﻿MONO_GC_PARAMS=bridge-implementation=new

@@ -318,7 +318,12 @@ namespace Moyeu
 
 			try {
 				var stations = await hubway.GetStations (forceRefresh);
-				await SetMapStationPins (stations);
+				if(stations.Length == 0){
+					Toast.MakeText(Activity, Resource.String.load_error, ToastLength.Long).Show();
+				}
+				else{
+					await SetMapStationPins (stations);
+				}
 				lastUpdateText.Text = "Last refreshed: " + DateTime.Now.ToShortTimeString ();
 			} catch (Exception e) {
 				e.Data ["method"] = "FillUpMaps";

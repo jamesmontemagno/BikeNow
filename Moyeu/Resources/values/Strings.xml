@@ -6,4 +6,5 @@
 	<string name="open_drawer">Open drawer</string>
 	<string name="close_drawer">Close Drawer</string>
 	<string name="about">About</string>
+	<string name="load_error">Unable to load stations.</string>
 </resources>

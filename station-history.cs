@@ -24,7 +24,7 @@ class T
 
 		var client = new System.Net.Http.HttpClient ();
 		client.Timeout = new TimeSpan (0, 1, 0);
-		var result = client.GetStringAsync ("https://secure.prontocycleshare.com/data2/stations.json");
+		var result = client.GetStringAsync ("http://secure.prontocycleshare.com/data2/stations.json");
 		result.Wait ();
 
 		var baseName = string.Format ("bikeStations_{0:yyyy-MM-dd_HH-mm-ss}", currentTime);

@@ -43,7 +43,7 @@ namespace Moyeu.Pronto
 		[JsonIgnore]
 		public bool OutOfService
 		{
-			get { return !Planned && (b || t || (DocksAvailable == 0 && BikesAvailable == 0)); }
+			get { return !Planned && (b || (DocksAvailable == 0 && BikesAvailable == 0)); }
 		}
 	}
 }
