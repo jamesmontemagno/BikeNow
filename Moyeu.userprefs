@@ -1,6 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.T062005D5Z" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Moyeu/Hubway.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Moyeu/MainActivity.cs">
     <Files>
       <File FileName="Moyeu/MainActivity.cs" Line="1" Column="1" />
       <File FileName="Moyeu/Hubway.cs" Line="23" Column="23" />
