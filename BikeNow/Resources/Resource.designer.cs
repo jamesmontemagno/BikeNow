@@ -1496,79 +1496,82 @@ namespace BikeNow
 			public const int list_selector_bg = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int mr_ic_audio_vol = 2130837601;
+			public const int logo = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837602;
+			public const int mr_ic_audio_vol = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int mr_ic_media_route_connecting_holo_light = 2130837603;
+			public const int mr_ic_media_route_connecting_holo_dark = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837604;
+			public const int mr_ic_media_route_connecting_holo_light = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int mr_ic_media_route_disabled_holo_light = 2130837605;
+			public const int mr_ic_media_route_disabled_holo_dark = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int mr_ic_media_route_holo_dark = 2130837606;
+			public const int mr_ic_media_route_disabled_holo_light = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int mr_ic_media_route_holo_light = 2130837607;
+			public const int mr_ic_media_route_holo_dark = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int mr_ic_media_route_off_holo_dark = 2130837608;
+			public const int mr_ic_media_route_holo_light = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int mr_ic_media_route_off_holo_light = 2130837609;
+			public const int mr_ic_media_route_off_holo_dark = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837610;
+			public const int mr_ic_media_route_off_holo_light = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int mr_ic_media_route_on_0_holo_light = 2130837611;
+			public const int mr_ic_media_route_on_0_holo_dark = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837612;
+			public const int mr_ic_media_route_on_0_holo_light = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int mr_ic_media_route_on_1_holo_light = 2130837613;
+			public const int mr_ic_media_route_on_1_holo_dark = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837614;
+			public const int mr_ic_media_route_on_1_holo_light = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int mr_ic_media_route_on_2_holo_light = 2130837615;
+			public const int mr_ic_media_route_on_2_holo_dark = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int mr_ic_media_route_on_holo_dark = 2130837616;
+			public const int mr_ic_media_route_on_2_holo_light = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int mr_ic_media_route_on_holo_light = 2130837617;
+			public const int mr_ic_media_route_on_holo_dark = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int pane_item_bg = 2130837618;
+			public const int mr_ic_media_route_on_holo_light = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int pane_item_bg_normal = 2130837619;
+			public const int pane_item_bg = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int pane_item_bg_selected = 2130837620;
+			public const int pane_item_bg_normal = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int pattern = 2130837621;
+			public const int pane_item_bg_selected = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int powered_by_google_dark = 2130837622;
+			public const int pattern = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int powered_by_google_light = 2130837623;
+			public const int powered_by_google_dark = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int texture_pattern = 2130837624;
+			public const int powered_by_google_light = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int time_cell_bg = 2130837625;
+			public const int texture_pattern = 2130837625;
+			
+			// aapt resource value: 0x7f02007a
+			public const int time_cell_bg = 2130837626;
 			
 			static Drawable()
 			{
@@ -1586,11 +1589,11 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e0061
 			public const int BikeNumber = 2131624033;
 			
-			// aapt resource value: 0x7f0e008a
-			public const int FlashBarLayout = 2131624074;
+			// aapt resource value: 0x7f0e0089
+			public const int FlashBarLayout = 2131624073;
 			
-			// aapt resource value: 0x7f0e008b
-			public const int FlashBarText = 2131624075;
+			// aapt resource value: 0x7f0e008a
+			public const int FlashBarText = 2131624074;
 			
 			// aapt resource value: 0x7f0e006b
 			public const int InfoViewBikeNumber = 2131624043;
@@ -1622,8 +1625,8 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e005b
 			public const int StationMap = 2131624027;
 			
-			// aapt resource value: 0x7f0e008c
-			public const int UpdateTimeText = 2131624076;
+			// aapt resource value: 0x7f0e008b
+			public const int UpdateTimeText = 2131624075;
 			
 			// aapt resource value: 0x7f0e0045
 			public const int action_bar = 2131624005;
@@ -1703,9 +1706,6 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e0019
 			public const int book_now = 2131623961;
 			
-			// aapt resource value: 0x7f0e0087
-			public const int button_about = 2131624071;
-			
 			// aapt resource value: 0x7f0e0015
 			public const int buyButton = 2131623957;
 			
@@ -1730,8 +1730,8 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e0085
 			public const int content_frame = 2131624069;
 			
-			// aapt resource value: 0x7f0e0099
-			public const int content_wrapper = 2131624089;
+			// aapt resource value: 0x7f0e0098
+			public const int content_wrapper = 2131624088;
 			
 			// aapt resource value: 0x7f0e0043
 			public const int decor_content_parent = 2131624003;
@@ -1829,8 +1829,8 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e0086
 			public const int left_drawer = 2131624070;
 			
-			// aapt resource value: 0x7f0e0088
-			public const int left_drawer_around = 2131624072;
+			// aapt resource value: 0x7f0e0087
+			public const int left_drawer_around = 2131624071;
 			
 			// aapt resource value: 0x7f0e005c
 			public const int linearLayout1 = 2131624028;
@@ -1859,35 +1859,35 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e0081
 			public const int loginStatusText = 2131624065;
 			
-			// aapt resource value: 0x7f0e0089
-			public const int map = 2131624073;
+			// aapt resource value: 0x7f0e0088
+			public const int map = 2131624072;
 			
 			// aapt resource value: 0x7f0e0017
 			public const int match_parent = 2131623959;
 			
-			// aapt resource value: 0x7f0e0090
-			public const int media_route_control_frame = 2131624080;
+			// aapt resource value: 0x7f0e008f
+			public const int media_route_control_frame = 2131624079;
 			
-			// aapt resource value: 0x7f0e0091
-			public const int media_route_disconnect_button = 2131624081;
+			// aapt resource value: 0x7f0e0090
+			public const int media_route_disconnect_button = 2131624080;
+			
+			// aapt resource value: 0x7f0e008c
+			public const int media_route_list = 2131624076;
 			
 			// aapt resource value: 0x7f0e008d
-			public const int media_route_list = 2131624077;
+			public const int media_route_volume_layout = 2131624077;
 			
 			// aapt resource value: 0x7f0e008e
-			public const int media_route_volume_layout = 2131624078;
+			public const int media_route_volume_slider = 2131624078;
 			
-			// aapt resource value: 0x7f0e008f
-			public const int media_route_volume_slider = 2131624079;
-			
-			// aapt resource value: 0x7f0e009a
-			public const int menu_mylocation = 2131624090;
-			
-			// aapt resource value: 0x7f0e009c
-			public const int menu_refresh = 2131624092;
+			// aapt resource value: 0x7f0e0099
+			public const int menu_mylocation = 2131624089;
 			
 			// aapt resource value: 0x7f0e009b
-			public const int menu_search = 2131624091;
+			public const int menu_refresh = 2131624091;
+			
+			// aapt resource value: 0x7f0e009a
+			public const int menu_search = 2131624090;
 			
 			// aapt resource value: 0x7f0e002a
 			public const int middle = 2131623978;
@@ -1919,23 +1919,23 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e003f
 			public const int radio = 2131623999;
 			
-			// aapt resource value: 0x7f0e0095
-			public const int rentalFromStation = 2131624085;
+			// aapt resource value: 0x7f0e0094
+			public const int rentalFromStation = 2131624084;
 			
-			// aapt resource value: 0x7f0e0098
-			public const int rentalPrice = 2131624088;
+			// aapt resource value: 0x7f0e0097
+			public const int rentalPrice = 2131624087;
+			
+			// aapt resource value: 0x7f0e0091
+			public const int rentalTime = 2131624081;
 			
 			// aapt resource value: 0x7f0e0092
-			public const int rentalTime = 2131624082;
+			public const int rentalTimePrimary = 2131624082;
 			
 			// aapt resource value: 0x7f0e0093
-			public const int rentalTimePrimary = 2131624083;
+			public const int rentalTimeSecondary = 2131624083;
 			
-			// aapt resource value: 0x7f0e0094
-			public const int rentalTimeSecondary = 2131624084;
-			
-			// aapt resource value: 0x7f0e0096
-			public const int rentalToStation = 2131624086;
+			// aapt resource value: 0x7f0e0095
+			public const int rentalToStation = 2131624085;
 			
 			// aapt resource value: 0x7f0e0013
 			public const int sandbox = 2131623955;
@@ -2027,8 +2027,8 @@ namespace BikeNow
 			// aapt resource value: 0x7f0e0056
 			public const int textView4 = 2131624022;
 			
-			// aapt resource value: 0x7f0e0097
-			public const int textView5 = 2131624087;
+			// aapt resource value: 0x7f0e0096
+			public const int textView5 = 2131624086;
 			
 			// aapt resource value: 0x7f0e003b
 			public const int title = 2131623995;

@@ -190,6 +190,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_about.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_drawer_star.png" />
     <AndroidResource Include="Resources\layout\Settings.axml" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

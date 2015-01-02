@@ -104,13 +104,6 @@ namespace BikeNow
 			Pronto.Instance.Subscribe (this);
 			FavoriteManager.FavoritesChanged += (sender, e) => aroundAdapter.Refresh ();
 
-			FindViewById<Button>(Resource.Id.button_about).Click += (sender, e) => {
-				StartActivity(new Intent(this, typeof(SettingsActivity)));
-				var data = new Dictionary<string, string> ();
-				data.Add ("Section", "Settings");
-				//Xamarin.Insights.Track ("Navigated", data);
-			};
-
 			drawerMenu = FindViewById<ListView> (Resource.Id.left_drawer);
 			drawerMenu.AddFooterView (new Space (this));
 			drawerMenu.ItemClick += HandleSectionItemClick;
@@ -169,10 +162,17 @@ namespace BikeNow
 				SwitchTo (favoriteFragment);
 				break;
 			case 2:
+				StartActivity (new Intent (this, typeof(SettingsActivity)));
+				var data = new Dictionary<string, string> ();
+				data.Add ("Section", "Settings");
+				//Xamarin.Insights.Track ("Navigated", data);
+				break;
+
+			/*case 2:
 				if (rentalFragment == null)
 					rentalFragment = new RentalFragment (this);
 				SwitchTo (rentalFragment);
-				break;
+				break;*/
 			default:
 				return;
 			}
@@ -351,6 +351,7 @@ namespace BikeNow
 		Tuple<int, string>[] sections = new Tuple<int, string>[] {
 			Tuple.Create (Resource.Drawable.ic_drawer_map, "Map"),
 			Tuple.Create (Resource.Drawable.ic_drawer_star, "Favorites"),
+			Tuple.Create(Resource.Drawable.ic_about, "About"),
 			//Tuple.Create (Resource.Drawable.ic_drawer_rentals, "Rental History"),
 		};
 

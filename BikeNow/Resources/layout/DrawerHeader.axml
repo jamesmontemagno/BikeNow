@@ -7,7 +7,7 @@
     android:fontFamily="sans-serif-condensed"
     android:id="@+id/titleText"
     android:textAllCaps="true"
-    android:textColor="@android:color/white"
+    android:textColor="#4A4A4A"
     android:textStyle="bold"
     android:textSize="10sp"
     android:layout_marginRight="8dp"

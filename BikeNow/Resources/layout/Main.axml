@@ -21,6 +21,14 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:layout_gravity="start">
+        <ImageView
+            android:src="@drawable/logo"
+            android:paddingLeft="24dp"
+            android:paddingRight="128dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,23 +42,6 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1" />
-        <Button
-            android:id="@+id/button_about"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_about"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/about"
-            android:background="@android:color/transparent"
-            android:gravity="left|center_vertical"
-            android:fontFamily="@string/menu_item_fontFamily"
-            android:textSize="22sp"
-            android:drawablePadding="12dp"
-            style="@style/drawer_item_shadow" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
         <include
             layout="@layout/DrawerHeader" />
         <ListView
