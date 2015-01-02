@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="About Bike Now">
+    <Preference android:title="v1.0" android:summary="Copyright 2014 Refractored LLC" >
+      <intent android:action="android.intent.action.VIEW" android:data="http://www.refractored.com" />
+    </Preference>
+     <Preference android:title="Created by" android:summary="James Montemagno" >
+      <intent android:action="android.intent.action.VIEW" android:data="http://www.twitter.com/jamesmontemagno" />
+    </Preference>
+    <Preference android:title="Created with" android:summary="C# and Xamarin">
+      <intent android:action="android.intent.action.VIEW" android:data="http://www.xamarin.com" />
+    </Preference>
+	<Preference android:title="Inspired by" android:summary="Moyeu for Hubway. Created by Jérémie Laval." >
+      <intent android:action="android.intent.action.VIEW" android:data="http://moyeuapp.net/" />
+    </Preference>
+    <Preference android:title="Privacy Policy">
+      <intent android:action="android.intent.action.VIEW" android:data="http://refractored.ghost.io/about/"/>
+    </Preference>
+	<Preference
+	            android:title="Review App"
+	            android:summary="Want my undying love and eternal gratitude? Please take a moment to give feedback on Bike Now.">
+	      <intent android:action="android.intent.action.VIEW"
+	              android:data="http://market.android.com/details?id=com.refractored.bikenowpronto" />
+	    </Preference>
+  </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,26 @@
+﻿<Properties StartupItem="BikeNow/BikeNow.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.T062005D5Z" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="BikeNow/Properties/AndroidManifest.xml">
+    <Files>
+      <File FileName="BikeNow/Activities/BaseActivity.cs" Line="1" Column="1" />
+      <File FileName="BikeNow/Pronto.cs" Line="4" Column="4" />
+      <File FileName="BikeNow/ProntoHistory.cs" Line="1" Column="1" />
+      <File FileName="BikeNow/ProntoRentals.cs" Line="1" Column="1" />
+      <File FileName="BikeNow/Activities/MainActivity.cs" Line="6" Column="6" />
+      <File FileName="BikeNow/Fragments/ProntoMapFragment.cs" Line="13" Column="13" />
+      <File FileName="BikeNow/Fragments/FavoriteFragment.cs" Line="7" Column="7" />
+      <File FileName="BikeNow/Properties/AndroidManifest.xml" Line="12" Column="12" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/Moyeu/Moyeu/HubwayRentals.cs" line="102" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/BikeNow/Moyeu/Hubway.cs" line="101" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/BikeNow/Moyeu/Hubway.cs" line="87" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/BikeNow/Moyeu/HubwayMapFragment.cs" line="325" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MoyeuWear MonoForAntroid.PreferredDevice="Nexus 4" />
+  <MonoDevelop.Ide.ItemProperties.BikeNow MonoForAntroid.PreferredDevice="Nexus 4" />
+</Properties>

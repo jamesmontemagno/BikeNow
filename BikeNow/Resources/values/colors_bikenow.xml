@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bikenow_color">#73d540</color>
+	<color name="primary_color">#8BC34A</color>
+	<color name="primary_color_dark">#33691E</color>
+	<color name="accent_color">#2962FF</color>
+</resources>

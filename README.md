@@ -22,4 +22,4 @@ Icons:
 - <a href="http://thenounproject.com/noun/bicycle/#icon-No3535" target="_blank">Bicycle</a> designed by <a href="http://thenounproject.com/ugur.akdemir" target="_blank">Ugur Akdemir</a> from The Noun Project
 - <a href="http://thenounproject.com/noun/bike-lock/#icon-No15865" target="_blank">Bike Lock</a> designed by <a href="http://thenounproject.com/joe_harrison" target="_blank">Joe Harrison</a> from The Noun Project
 
-Data provided by Pronto at http://secure.prontocycleshare.com/data/stations.json
+Data provided by Pronto at [https://secure.prontocycleshare.com/data2/stations.json](https://secure.prontocycleshare.com/data2/stations.json)
