@@ -66,6 +66,7 @@ namespace Moyeu
 			base.OnCreate (bundle);
 
 			Xamarin.Insights.Initialize("key", this);
+			Xamarin.Insights.ForceDataTransmission = true;
 			AndroidExtensions.Initialize (this);
 
 			SetContentView (Resource.Layout.Main);
@@ -78,7 +79,10 @@ namespace Moyeu
 			                                              Resource.String.close_drawer) {
 				OpenCallback = () => {
 					ActionBar.Title = Title;
-					CurrentFragment.HasOptionsMenu = false;
+
+					if(CurrentFragment != null)
+							CurrentFragment.HasOptionsMenu = false;
+
 					InvalidateOptionsMenu ();
 				},
 				CloseCallback = () => {
@@ -240,7 +244,7 @@ namespace Moyeu
 		protected override void OnNewIntent (Intent intent)
 		{
 			base.OnNewIntent (intent);
-			if (mapFragment.IsVisible)
+			if (mapFragment != null && mapFragment.IsVisible)
 				mapFragment.OnSearchIntent (intent);
 		}
 

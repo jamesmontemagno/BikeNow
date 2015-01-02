@@ -12,7 +12,8 @@ namespace Moyeu
 {
 	public class Hubway : IObservable<Station[]>
 	{
-		const string HubwayApiEndpoint = "http://secure.prontocycleshare.com/data/stations.json";
+		//
+		const string HubwayApiEndpoint = "http://bikenowapp.azurewebsites.net/cron/latest_stations.json";
 
 		public static readonly Func<Station, bool> AvailableBikeStationPredicate = s => s.BikeCount > 1 && s.EmptySlotCount > 1;
 
