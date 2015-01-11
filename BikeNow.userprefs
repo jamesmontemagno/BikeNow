@@ -1,15 +1,13 @@
 ﻿<Properties StartupItem="BikeNow/BikeNow.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.T062005D5Z" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="BikeNow/Properties/AndroidManifest.xml">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="BikeNow/Resources/values/styles.xml">
     <Files>
-      <File FileName="BikeNow/Activities/BaseActivity.cs" Line="1" Column="1" />
-      <File FileName="BikeNow/Pronto.cs" Line="4" Column="4" />
-      <File FileName="BikeNow/ProntoHistory.cs" Line="1" Column="1" />
-      <File FileName="BikeNow/ProntoRentals.cs" Line="1" Column="1" />
-      <File FileName="BikeNow/Activities/MainActivity.cs" Line="6" Column="6" />
-      <File FileName="BikeNow/Fragments/ProntoMapFragment.cs" Line="13" Column="13" />
-      <File FileName="BikeNow/Fragments/FavoriteFragment.cs" Line="7" Column="7" />
-      <File FileName="BikeNow/Properties/AndroidManifest.xml" Line="12" Column="12" />
+      <File FileName="BikeNow/Resources/xml/preferences_general.xml" Line="20" Column="20" />
+      <File FileName="BikeNow/Activities/SettingsActivity.cs" Line="1" Column="1" />
+      <File FileName="BikeNow/Resources/drawable/activatedbackground.xml" Line="38" Column="38" />
+      <File FileName="BikeNow/Resources/values-v21/styles.xml" Line="1" Column="1" />
+      <File FileName="BikeNow/Resources/values/colors_bikenow.xml" Line="30" Column="30" />
+      <File FileName="BikeNow/Resources/values/styles.xml" Line="30" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

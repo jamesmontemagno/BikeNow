@@ -21,14 +21,17 @@ using Android.Support.V4.View;
 
 namespace BikeNow
 {
-	public class ProntoMapFragment: Android.Support.V4.App.Fragment, ViewTreeObserver.IOnGlobalLayoutListener, IProntoSection
+	public class ProntoMapFragment: Android.Support.V4.App.Fragment, ViewTreeObserver.IOnGlobalLayoutListener, IProntoSection, IOnMapReadyCallback, IOnStreetViewPanoramaReadyCallback
 	{
 		Dictionary<int, Marker> existingMarkers = new Dictionary<int, Marker> ();
 		Marker locationPin;
 		MapView mapFragment;
+		GoogleMap map;
 		StreetViewPanoramaView streetViewFragment;
-		Pronto hubway = Pronto.Instance;
-		ProntoHistory hubwayHistory = new ProntoHistory ();
+		StreetViewPanorama streetPanorama;
+
+		Pronto pronto = Pronto.Instance;
+		ProntoHistory prontoHistory = new ProntoHistory ();
 
 		bool loading;
 		bool showedStale;
@@ -47,9 +50,6 @@ namespace BikeNow
 
 		public ProntoMapFragment (Context context)
 		{
-			MapsInitializer.Initialize (context);
-			this.pinFactory = new PinFactory (context);
-			this.favManager = FavoriteManager.Obtain (context);
 			HasOptionsMenu = true;
 		}
 
@@ -74,6 +74,14 @@ namespace BikeNow
 		public void RefreshData ()
 		{
 			FillUpMap (forceRefresh: false);
+		}
+
+		public override void OnActivityCreated (Bundle savedInstanceState)
+		{
+			base.OnActivityCreated (savedInstanceState);
+			var context = Activity;
+			this.pinFactory = new PinFactory (context);
+			this.favManager = FavoriteManager.Obtain (context);
 		}
 
 		public override void OnStart ()
@@ -101,6 +109,7 @@ namespace BikeNow
 
 			return view;
 		}
+			
 
 		void SetupInfoPane (View view)
 		{
@@ -113,69 +122,84 @@ namespace BikeNow
 		{
 			base.OnViewCreated (view, savedInstanceState);
 
-			// Default map initialization
-			mapFragment.Map.MyLocationEnabled = true;
-			mapFragment.Map.MapType = GoogleMap.MapTypeNormal;
-			mapFragment.Map.UiSettings.MyLocationButtonEnabled = false;
-			mapFragment.Map.UiSettings.ZoomControlsEnabled = false;
-			mapFragment.Map.UiSettings.CompassEnabled = false;
-			mapFragment.Map.UiSettings.RotateGesturesEnabled = false;
-			mapFragment.Map.UiSettings.TiltGesturesEnabled = false;
-			mapFragment.Map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (
-				new LatLng (47.60621, -122.332071),
-				13
-			));
+			view.SetBackgroundDrawable (AndroidExtensions.DefaultBackground);
 
-			mapFragment.Map.MarkerClick += HandleMarkerClick;
-			mapFragment.Map.MapClick += HandleMapClick;
-			var oldPosition = PreviousCameraPosition;
-			if (oldPosition != null)
-				mapFragment.Map.MoveCamera (CameraUpdateFactory.NewCameraPosition (oldPosition));
+			mapFragment.GetMapAsync (this);
 
+
+
+		
 			// Setup info pane
-			var bikeDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.bike);
-			var lockDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.ic_lock);
-			var stationLockDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.station_lock);
-			var bikeNumberDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.bike_number);
-			var stationNotInstalledDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.not_installed);
-			var clockDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.clock);
+			SetSvgImage (pane, Resource.Id.bikeImageView, Resource.Raw.bike);
+			SetSvgImage (pane, Resource.Id.lockImageView, Resource.Raw.ic_lock);
+			SetSvgImage (pane, Resource.Id.stationLock, Resource.Raw.station_lock);
+			SetSvgImage (pane, Resource.Id.bikeNumberImg, Resource.Raw.bike_number);
+			SetSvgImage (pane, Resource.Id.clockImg, Resource.Raw.clock);
+			SetSvgImage (pane, Resource.Id.stationNotInstalled, Resource.Raw.not_installed);
 			starOnDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.star_on);
 			starOffDrawable = SvgFactory.GetDrawable (Resources, Resource.Raw.star_off);
-			pane.FindViewById<ImageView> (Resource.Id.bikeImageView).SetImageDrawable (bikeDrawable);
-			pane.FindViewById<ImageView> (Resource.Id.lockImageView).SetImageDrawable (lockDrawable);
-			pane.FindViewById<ImageView> (Resource.Id.stationLock).SetImageDrawable (stationLockDrawable);
-			pane.FindViewById<ImageView> (Resource.Id.stationNotInstalled).SetImageDrawable (stationNotInstalledDrawable);
-			pane.FindViewById<ImageView> (Resource.Id.bikeNumberImg).SetImageDrawable (bikeNumberDrawable);
-			pane.FindViewById<ImageView> (Resource.Id.clockImg).SetImageDrawable (clockDrawable);
 			var starBtn = pane.FindViewById<ImageButton> (Resource.Id.StarButton);
 			starBtn.Click += HandleStarButtonChecked;
-			streetViewFragment.StreetViewPanorama.UserNavigationEnabled = false;
-			streetViewFragment.StreetViewPanorama.StreetNamesEnabled = false;
-			streetViewFragment.StreetViewPanorama.StreetViewPanoramaClick += HandleMapButtonClick;
+			streetViewFragment.GetStreetViewPanoramaAsync (this);
+		}
+
+		void SetSvgImage (View baseView, int viewId, int resId)
+		{
+			var view = baseView.FindViewById<ImageView> (viewId);
+			if (view == null)
+				return;
+			var img = SvgFactory.GetDrawable (Resources, resId);
+			view.SetImageDrawable (img);
+		}
+
+		public void OnMapReady (GoogleMap googleMap)
+		{
+			this.map = googleMap;
+			MapsInitializer.Initialize (Activity.ApplicationContext);
+
+			googleMap.MyLocationEnabled = true;
+			googleMap.UiSettings.MyLocationButtonEnabled = false;
+			googleMap.MapClick += HandleMapClick;
+			googleMap.MarkerClick += HandleMarkerClick;
+
+			var position = PreviousCameraPosition;
+			if(position != null)
+			{
+				//default map initialization;
+				googleMap.MoveCamera (CameraUpdateFactory.NewCameraPosition(position));
+			}
+		}
+
+		public void OnStreetViewPanoramaReady (StreetViewPanorama panorama)
+		{
+			this.streetPanorama = panorama;
+			panorama.UserNavigationEnabled = false;
+			panorama.StreetNamesEnabled = false;
+			panorama.StreetViewPanoramaClick += HandleMapButtonClick;
 		}
 
 		void HandlePaneStateChanged (InfoPane.State state)
 		{
 			var time = Resources.GetInteger (Android.Resource.Integer.ConfigShortAnimTime);
 			var enabled = state != InfoPane.State.FullyOpened;
-			mapFragment.Map.UiSettings.ScrollGesturesEnabled = enabled;
-			mapFragment.Map.UiSettings.ZoomGesturesEnabled = enabled;
+			map.UiSettings.ScrollGesturesEnabled = enabled;
+			map.UiSettings.ZoomGesturesEnabled = enabled;
 			if (state == InfoPane.State.FullyOpened && currentShownMarker != null) {
-				oldPosition = mapFragment.Map.CameraPosition;
+				oldPosition = map.CameraPosition;
 				var destX = mapFragment.Width / 2;
 				var destY = (mapFragment.Height - pane.Height) / 2;
-				var currentPoint = mapFragment.Map.Projection.ToScreenLocation (currentShownMarker.Position);
+				var currentPoint = map.Projection.ToScreenLocation (currentShownMarker.Position);
 				var scroll = CameraUpdateFactory.ScrollBy (- destX + currentPoint.X, - destY + currentPoint.Y);
-				mapFragment.Map.AnimateCamera (scroll, time, null);
+				map.AnimateCamera (scroll, time, null);
 			} else if (oldPosition != null) {
-				mapFragment.Map.AnimateCamera (CameraUpdateFactory.NewCameraPosition (oldPosition), time, null);
+				map.AnimateCamera (CameraUpdateFactory.NewCameraPosition (oldPosition), time, null);
 				oldPosition = null;
 			}
 		}
 
 		void HandleMapButtonClick (object sender, StreetViewPanorama.StreetViewPanoramaClickEventArgs e)
 		{
-			var stations = hubway.LastStations;
+			var stations = pronto.LastStations;
 			if (stations == null || currentShownID == -1)
 				return;
 
@@ -231,7 +255,7 @@ namespace BikeNow
 				var pos = savedInstanceState.GetParcelable ("previousPosition") as CameraPosition;
 				if (pos != null) {
 					var update = CameraUpdateFactory.NewCameraPosition (pos);
-					mapFragment.Map.MoveCamera (update);
+					map.MoveCamera (update);
 				}
 			}
 		}
@@ -254,7 +278,7 @@ namespace BikeNow
 		{
 			base.OnPause ();
 			mapFragment.OnPause ();
-			PreviousCameraPosition = mapFragment.Map.CameraPosition;
+			PreviousCameraPosition = map.CameraPosition;
 			streetViewFragment.OnPause ();
 		}
 
@@ -321,7 +345,7 @@ namespace BikeNow
 			flashBar.ShowLoading ();
 
 			try {
-				var stations = await hubway.GetStations (forceRefresh);
+				var stations = await pronto.GetStations (forceRefresh);
 				if(stations.Length == 0){
 					Toast.MakeText(Activity, Resource.String.load_error, ToastLength.Long).Show();
 				}
@@ -381,7 +405,7 @@ namespace BikeNow
 					.SetSnippet (snippet)
 					.SetPosition (new Android.Gms.Maps.Model.LatLng (station.Location.Lat, station.Location.Lon))
 					.InvokeIcon (BitmapDescriptorFactory.FromBitmap (pin));
-				existingMarkers [station.Id] = mapFragment.Map.AddMarker (markerOptions);
+				existingMarkers [station.Id] = map.AddMarker (markerOptions);
 			}
 		}
 
@@ -402,7 +426,7 @@ namespace BikeNow
 			var latLng = marker.Position;
 			var camera = CameraUpdateFactory.NewLatLngZoom (latLng, zoom);
 			var time = Resources.GetInteger (animDurationID);
-			mapFragment.Map.AnimateCamera (camera, time, new MapAnimCallback (() => OpenStationWithMarker (marker)));
+			map.AnimateCamera (camera, time, new MapAnimCallback (() => OpenStationWithMarker (marker)));
 		}
 
 		public void OpenStationWithMarker (Marker marker)
@@ -417,7 +441,6 @@ namespace BikeNow
 			var starButton = pane.FindViewById<ImageButton> (Resource.Id.StarButton);
 
 			var splitTitle = marker.Title.Split ('|');
-			string displayNameSecond;
 			//var displayName = StationUtils.CutStationName (splitTitle [1], out displayNameSecond);
 			name.Text = splitTitle[1];
 			name2.Text = splitTitle[2];
@@ -440,7 +463,7 @@ namespace BikeNow
 			bool activated = favs.Contains (currentShownID);
 			starButton.SetImageDrawable (activated ? starOnDrawable : starOffDrawable);
 
-			var streetView = streetViewFragment.StreetViewPanorama;
+			var streetView = streetPanorama;
 			streetView.SetPosition (marker.Position);
 
 			LoadStationHistory (currentShownID);
@@ -475,7 +498,7 @@ namespace BikeNow
 				v.Text = "-";
 				v.SetTextColor (Color.Rgb (0x90, 0x90, 0x90));
 			}
-			var history = (await hubwayHistory.GetStationHistory (stationID)).ToArray ();
+			var history = (await prontoHistory.GetStationHistory (stationID)).ToArray ();
 			if (stationID != currentShownID || history.Length == 0)
 				return;
 
@@ -505,7 +528,7 @@ namespace BikeNow
 		public void CenterMapOnLocation (LatLng latLng)
 		{
 			var camera = CameraUpdateFactory.NewLatLngZoom (latLng, 16);
-			mapFragment.Map.AnimateCamera (camera,
+			map.AnimateCamera (camera,
 			                               new MapAnimCallback (() => SetLocationPin (latLng)));
 		}
 
@@ -530,8 +553,13 @@ namespace BikeNow
 				    || !prefs.Contains ("lastPosition-tilt")
 				    || !prefs.Contains ("lastPosition-zoom")
 				    || !prefs.Contains ("lastPosition-lat")
-				    || !prefs.Contains ("lastPosition-lon"))
-					return null;
+				    || !prefs.Contains ("lastPosition-lon")) {
+				
+					return new CameraPosition.Builder ()
+						.Zoom (13)
+						.Target (new LatLng (47.60621, -122.332071))
+						.Build ();
+				}
 
 				var bearing = prefs.GetFloat ("lastPosition-bearing", 0);
 				var tilt = prefs.GetFloat ("lastPosition-tilt", 0);
@@ -547,7 +575,7 @@ namespace BikeNow
 					.Build ();
 			}
 			set {
-				var position = mapFragment.Map.CameraPosition;
+				var position = map.CameraPosition;
 				var prefs = Activity.GetPreferences (FileCreationMode.Private);
 				using (var editor = prefs.Edit ()) {
 					editor.PutFloat ("lastPosition-bearing", position.Bearing);
@@ -562,7 +590,6 @@ namespace BikeNow
 
 		bool CenterMapOnUser ()
 		{
-			var map = mapFragment.Map;
 			var location = map.MyLocation;
 			if (location == null)
 				return false;
@@ -583,7 +610,7 @@ namespace BikeNow
 				locationPin.Remove ();
 				locationPin = null;
 			}
-			var proj = mapFragment.Map.Projection;
+			var proj = map.Projection;
 			var location = proj.ToScreenLocation (finalLatLng);
 			location.Offset (0, -(35.ToPixels ()));
 			var startLatLng = proj.FromScreenLocation (location);
@@ -592,7 +619,7 @@ namespace BikeNow
 				var opts = new MarkerOptions ()
 					.SetPosition (startLatLng)
 					.InvokeIcon (BitmapDescriptorFactory.DefaultMarker (BitmapDescriptorFactory.HueViolet));
-				var marker = mapFragment.Map.AddMarker (opts);
+				var marker = map.AddMarker (opts);
 				var animator = ObjectAnimator.OfObject (marker, "position", new LatLngEvaluator (), startLatLng, finalLatLng);
 				animator.SetDuration (1000);
 				animator.SetInterpolator (new Android.Views.Animations.BounceInterpolator ());

@@ -109,8 +109,7 @@ namespace BikeNow
 			drawerMenu.ItemClick += HandleSectionItemClick;
 			menuNormalTf = Typeface.Create (Resources.GetString (Resource.String.menu_item_fontFamily),
 			                                TypefaceStyle.Normal);
-			menuHighlightTf = Typeface.Create (Resources.GetString (Resource.String.menu_item_fontFamily),
-			                                   TypefaceStyle.Bold);
+
 			drawerMenu.Adapter = new DrawerMenuAdapter (this);
 
 			drawerAround = FindViewById<ListView> (Resource.Id.left_drawer_around);
@@ -118,6 +117,7 @@ namespace BikeNow
 			drawerAround.Adapter = aroundAdapter = new DrawerAroundAdapter (this);
 
 			drawerMenu.SetItemChecked (0, true);
+
 			if (CheckGooglePlayServices ()) {
 				client = CreateApiClient ();
 				SwitchTo (mapFragment = new ProntoMapFragment (this));
@@ -219,8 +219,13 @@ namespace BikeNow
 		void SetSelectedMenuIndex (int pos)
 		{
 			for (int i = 0; i < 2; i++) {
-				var text = (TextView)drawerMenu.GetChildAt (i);
-				text.Typeface = i == pos ? menuHighlightTf : menuNormalTf;
+				var view = drawerMenu.GetChildAt (i);
+				var text = view.FindViewById<TextView> (Resource.Id.text);
+				if (i == pos)
+					text.SetTypeface (text.Typeface, TypefaceStyle.Bold);
+				else
+					text.SetTypeface (text.Typeface, TypefaceStyle.Normal);
+
 			}
 		}
 
@@ -346,6 +351,12 @@ namespace BikeNow
 		}
 	}
 
+
+	class MyViewHolder : Java.Lang.Object
+	{
+		public TextView Title { get; set; }
+	}
+
 	class DrawerMenuAdapter : BaseAdapter
 	{
 		Tuple<int, string>[] sections = new Tuple<int, string>[] {
@@ -374,18 +385,31 @@ namespace BikeNow
 
 		public override View GetView (int position, View convertView, ViewGroup parent)
 		{
-			var text = convertView as TextView;
-			if (text == null) {
-				var inflater = context.GetSystemService (Context.LayoutInflaterService).JavaCast<LayoutInflater> ();
-				text = (TextView)inflater.Inflate (Resource.Layout.DrawerItemLayout, parent, false);
-			}
-			// Initial menu initialization, put the first item as selected
-			if (position == 0 && convertView == null)
-				text.SetTypeface (text.Typeface, TypefaceStyle.Bold);
-			text.Text = sections [position].Item2;
-			text.SetCompoundDrawablesWithIntrinsicBounds (sections [position].Item1, 0, 0, 0);
+			var view = convertView;
+			MyViewHolder holder = null;
 
-			return text;
+			if(view != null)
+				holder = view.Tag as MyViewHolder;
+
+			if (holder == null) {
+				holder = new MyViewHolder ();
+				var inflater = context.GetSystemService (Context.LayoutInflaterService).JavaCast<LayoutInflater> ();
+				view = inflater.Inflate (Resource.Layout.DrawerItemLayout, parent, false);
+				holder.Title = view.FindViewById<TextView> (Resource.Id.text);
+				view.Tag = holder;
+
+			}
+
+			if (position == 0 && convertView == null)
+				holder.Title.SetTypeface (holder.Title.Typeface, TypefaceStyle.Bold);
+			else
+				holder.Title.SetTypeface (holder.Title.Typeface, TypefaceStyle.Normal);
+
+
+			holder.Title.Text = sections [position].Item2;
+			holder.Title.SetCompoundDrawablesWithIntrinsicBounds (sections [position].Item1, 0, 0, 0);
+
+			return view;
 		}
 
 		public override int Count {

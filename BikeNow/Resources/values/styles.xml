@@ -19,6 +19,7 @@
     <item name="colorAccent">@color/accent_color</item>
   	<!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="android:activatedBackgroundIndicator">@drawable/activatedbackground</item>
   </style>
 
 
