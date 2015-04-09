@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+  <style name="BikeNowTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <item name="android:windowNoTitle">true</item>
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">false</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">@color/primary_color</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">@color/primary_color_dark</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">@color/accent_color</item>
+  	<!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="android:activatedBackgroundIndicator">@drawable/activatedbackground</item>
+  </style>
+
+
+  <!-- Application theme. -->
+  <style name="BikeNowTheme" parent="BikeNowTheme.Base">
+   
+  </style>
+
+  <style name="BikeNowTheme.Settings" parent="@style/BikeNowTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+
+        <item name="toolbarStyle">@style/Widget.Toolbar</item>
+    </style>
+
+    <style name="Widget.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:navigationIcon">?attr/homeAsUpIndicator</item>
+        <item name="navigationIcon">?attr/homeAsUpIndicator</item>
+    </style>
+
+
+    <style name="drawer_item_shadow">
+        <item name="android:shadowColor">#25222222</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.1</item>
+    </style>
+
+	<color name="pane_btn_bg_selected">#9099cc00</color>
+	<color name="swipe_refresh_color_main">#00C81C</color>
+	<color name="swipe_refresh_color_shade1">#00AE18</color>
+	<color name="swipe_refresh_color_shade2">#00D51E</color>
+	<color name="swipe_refresh_color_shade3">#008813</color>
+	<color name="list_selector_bg_main">#20000000</color>
+	<string name="menu_item_fontFamily">sans-serif-light</string>
+
+	<style name="info_pane_section">
+		<item name="android:fontFamily">sans-serif-condensed</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:textSize">9sp</item>
+		<item name="android:textColor">#666666</item>
+		<item name="android:layout_marginLeft">8dp</item>
+		<item name="android:background">@drawable/info_pane_underline</item>
+		<item name="android:layout_marginRight">12dp</item>
+		<item name="android:paddingBottom">2dp</item>
+		<item name="android:paddingLeft">4dp</item>
+		<item name="android:layout_marginTop">8dp</item>
+	</style>
+
+	<style name="activity_time_entry">
+		<item name="android:text">-:-</item>
+		<item name="android:layout_width">0px</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:gravity">center</item>
+		<item name="android:layout_gravity">center_vertical</item>
+		<item name="android:textSize">10sp</item>
+	</style>
+
+	<style name="activity_number_entry">
+		<item name="android:text">-</item>
+		<item name="android:layout_width">0px</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:gravity">center</item>
+		<item name="android:layout_gravity">center_vertical</item>
+		<item name="android:textSize">14sp</item>
+	</style>
+</resources>

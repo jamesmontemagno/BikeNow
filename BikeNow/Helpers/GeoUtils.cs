@@ -1,0 +1,41 @@
+using System;
+using System.IO;
+
+namespace BikeNow
+{
+	public class GeoUtils
+	{
+		// Use spherical law of cosines
+		public static double Distance (GeoPoint p1, GeoPoint p2)
+		{
+			const int EarthRadius = 6371;
+			return Math.Acos (Math.Sin (DegToRad (p1.Lat)) * Math.Sin (DegToRad (p2.Lat)) +
+			                  Math.Cos (DegToRad (p1.Lat)) * Math.Cos (DegToRad (p2.Lat)) *
+			                  Math.Cos (DegToRad (p2.Lon) - DegToRad (p1.Lon))) * EarthRadius;
+		}
+
+		static double DegToRad (double deg)
+		{
+			return deg * Math.PI / 180;
+		}
+
+		public static void DumpLocation (GeoPoint p, Stream stream)
+		{
+			using (var writer = new BinaryWriter (stream, System.Text.Encoding.UTF8, true)) {
+				writer.Write (p.Lat);
+				writer.Write (p.Lon);
+			}
+		}
+
+		public static GeoPoint ParseFromStream (Stream stream)
+		{
+			using (var reader = new BinaryReader (stream, System.Text.Encoding.UTF8, true)) {
+				return new GeoPoint {
+					Lat = reader.ReadDouble (),
+					Lon = reader.ReadDouble ()
+				};
+			}
+		}
+	}
+}
+
