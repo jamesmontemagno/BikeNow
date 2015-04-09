@@ -1,13 +1,11 @@
 ﻿<Properties StartupItem="BikeNow/BikeNow.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="BikeNow/Resources/values/styles.xml">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="BikeNow/Resources/xml/preferences_general.xml" Line="20" Column="20" />
-      <File FileName="BikeNow/Activities/SettingsActivity.cs" Line="1" Column="1" />
-      <File FileName="BikeNow/Resources/drawable/activatedbackground.xml" Line="38" Column="38" />
-      <File FileName="BikeNow/Resources/values-v21/styles.xml" Line="1" Column="1" />
-      <File FileName="BikeNow/Resources/values/colors_bikenow.xml" Line="30" Column="30" />
-      <File FileName="BikeNow/Resources/values/styles.xml" Line="30" Column="30" />
+      <File FileName="BikeNow/Activities/MainActivity.cs" Line="75" Column="76" />
+      <File FileName="BikeNow/GoogleApis.cs" Line="54" Column="13" />
+      <File FileName="BikeNow/Fragments/ProntoMapFragment.cs" Line="334" Column="5" />
+      <File FileName="BikeNow/Fragments/FavoriteFragment.cs" Line="172" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -20,5 +18,4 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MoyeuWear MonoForAntroid.PreferredDevice="Nexus 4" />
-  <MonoDevelop.Ide.ItemProperties.BikeNow MonoForAntroid.PreferredDevice="Nexus 4" />
 </Properties>

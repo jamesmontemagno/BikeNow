@@ -13,7 +13,7 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Locations;
 
-using Android.Gms.Location;
+using Android.Gms.LocationSdk;
 using Android.Gms.Common;
 using Android.Gms.Common.Apis;
 using ConnectionCallbacks = Android.Gms.Common.Apis.IGoogleApiClientConnectionCallbacks;
@@ -72,8 +72,8 @@ namespace BikeNow
 		{
 			base.OnCreate (bundle);
 
-			//Xamarin.Insights.Initialize("key", this);
-			//Xamarin.Insights.ForceDataTransmission = true;
+      Xamarin.Insights.Initialize("key", this);
+			Xamarin.Insights.ForceDataTransmission = true;
 			AndroidExtensions.Initialize (this);
 
 			this.drawer = FindViewById<DrawerLayout> (Resource.Id.drawer_layout);
@@ -165,7 +165,7 @@ namespace BikeNow
 				StartActivity (new Intent (this, typeof(SettingsActivity)));
 				var data = new Dictionary<string, string> ();
 				data.Add ("Section", "Settings");
-				//Xamarin.Insights.Track ("Navigated", data);
+				Xamarin.Insights.Track ("Navigated", data);
 				break;
 
 			/*case 2:
@@ -192,7 +192,7 @@ namespace BikeNow
 
 			var data = new Dictionary<string, string> ();
 			data.Add ("Section", section.Name);
-			//Xamarin.Insights.Track ("Navigated", data);
+			Xamarin.Insights.Track ("Navigated", data);
 
 			var t = SupportFragmentManager.BeginTransaction ();
 			var currentFragment = CurrentFragment;
@@ -321,7 +321,7 @@ namespace BikeNow
 			if (location == null)
 				return;
 			var stations = Pronto.GetStationsAround (value,
-				                                     new GeoPoint { Lat = location.Latitude, Lon = location.Longitude },
+        new GeoPoint { Lat = location.Latitude, Lon = location.Longitude },
 				                                     minDistance: 1,
 				                                     maxItems: 4);
 			RunOnUiThread (() => aroundAdapter.SetStations (stations));

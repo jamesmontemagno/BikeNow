@@ -169,7 +169,7 @@ namespace BikeNow
 
 				var data = new Dictionary<string, string> ();
 				data.Add ("Station", Station.Name);
-				//Xamarin.Insights.Track ("Navigate to Station", data);
+				Xamarin.Insights.Track ("Navigate to Station", data);
 
 				var intent = new Intent (Intent.ActionView, uri);
 				context.StartActivity (intent);

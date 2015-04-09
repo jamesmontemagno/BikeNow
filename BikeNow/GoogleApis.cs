@@ -8,7 +8,7 @@ using Android.Widget;
 using Android.Graphics;
 using Android.Content;
 
-using LatLng = Android.Gms.Maps.Model.LatLng;
+using LatLng = Android.Gms.MapsSdk.Model.LatLng;
 
 namespace BikeNow
 {

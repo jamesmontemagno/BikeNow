@@ -13,8 +13,8 @@ using Android.Graphics;
 using Android.Locations;
 using Android.Animation;
 
-using Android.Gms.Maps;
-using Android.Gms.Maps.Model;
+using Android.Gms.MapsSdk;
+using Android.Gms.MapsSdk.Model;
 
 using XamSvg;
 using Android.Support.V4.View;
@@ -210,7 +210,7 @@ namespace BikeNow
 
 			var data = new Dictionary<string, string> ();
 			data.Add ("Station", station.Name);
-			//Xamarin.Insights.Track ("Navigate to Station", data);
+			Xamarin.Insights.Track ("Navigate to Station", data);
 
 			var location = station.GeoUrl;
 			var uri = Android.Net.Uri.Parse (location);
@@ -306,10 +306,10 @@ namespace BikeNow
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
 			e.Handled = true;
-			if (e.Marker.Title == null)
+      if (e.P0.Title == null)
 				return;
 
-			OpenStationWithMarker (e.Marker);
+      OpenStationWithMarker (e.P0);
 		}
 
 		void HandleStarButtonChecked (object sender, EventArgs e)
@@ -325,13 +325,13 @@ namespace BikeNow
 
 				var data = new Dictionary<string, string> ();
 				data.Add ("Station", currentShownID.ToString());
-				//Xamarin.Insights.Track ("Removed Favorited", data);
+				Xamarin.Insights.Track ("Removed Favorited", data);
 			} else {
 				starButton.SetImageDrawable (starOnDrawable);
 				favManager.AddToFavorite (currentShownID);
 				var data = new Dictionary<string, string> ();
 				data.Add ("Station", currentShownID.ToString());
-				//Xamarin.Insights.Track ("Added Favorited", data);
+				Xamarin.Insights.Track ("Added Favorited", data);
 			}
 		}
 
@@ -401,10 +401,10 @@ namespace BikeNow
 					snippet = "not_installed";
 
 				var markerOptions = new MarkerOptions ()
-					.SetTitle (station.Id + "|" + station.Street + "|" + station.Name)
-					.SetSnippet (snippet)
-					.SetPosition (new Android.Gms.Maps.Model.LatLng (station.Location.Lat, station.Location.Lon))
-					.InvokeIcon (BitmapDescriptorFactory.FromBitmap (pin));
+          .InvokeTitle (station.Id + "|" + station.Street + "|" + station.Name)
+          .InvokeSnippet (snippet)
+          .InvokePosition (new Android.Gms.MapsSdk.Model.LatLng (station.Location.Lat, station.Location.Lon))
+          .InvokeIcon (BitmapDescriptorFactory.FromBitmap (pin));
 				existingMarkers [station.Id] = map.AddMarker (markerOptions);
 			}
 		}
@@ -617,7 +617,7 @@ namespace BikeNow
 
 			new Handler (Activity.MainLooper).PostDelayed (() => {
 				var opts = new MarkerOptions ()
-					.SetPosition (startLatLng)
+          .InvokePosition (startLatLng)
 					.InvokeIcon (BitmapDescriptorFactory.DefaultMarker (BitmapDescriptorFactory.HueViolet));
 				var marker = map.AddMarker (opts);
 				var animator = ObjectAnimator.OfObject (marker, "position", new LatLngEvaluator (), startLatLng, finalLatLng);
