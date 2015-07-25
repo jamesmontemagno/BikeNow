@@ -73,13 +73,10 @@ namespace BikeNow
 			var ctx = inflater.Context;
 			var baseView = base.OnCreateView (inflater, container, savedInstanceState);
 			refreshLayout = new ListFragmentSwipeRefreshLayout (ctx, this);
-			refreshLayout.AddView (baseView, ViewGroup.LayoutParams.FillParent, ViewGroup.LayoutParams.FillParent);
-			refreshLayout.LayoutParameters = new ViewGroup.LayoutParams (ViewGroup.LayoutParams.FillParent,
-			                                                             ViewGroup.LayoutParams.FillParent);
-			refreshLayout.SetColorScheme (Resource.Color.swipe_refresh_color_main,
-			                              Resource.Color.swipe_refresh_color_shade1,
-			                              Resource.Color.swipe_refresh_color_shade2,
-			                              Resource.Color.swipe_refresh_color_shade3);
+            refreshLayout.AddView (baseView, ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+            refreshLayout.LayoutParameters = new ViewGroup.LayoutParams (ViewGroup.LayoutParams.MatchParent,
+                ViewGroup.LayoutParams.MatchParent);
+            refreshLayout.SetProgressBackgroundColorSchemeResource (Resource.Color.swipe_refresh_color_main);
 			refreshLayout.SetDistanceToTrigger (TypedValue.ApplyDimension (ComplexUnitType.Dip, 64, ctx.Resources.DisplayMetrics));
 			refreshLayout.Refresh += (sender, e) => Refresh (reset: false);
 

@@ -14,13 +14,14 @@ namespace BikeNow
 	[Activity (Label = "About", Icon = "@drawable/ic_launcher", Theme="@style/BikeNowTheme.Settings",
 		ScreenOrientation = ScreenOrientation.Portrait,
 		ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]			
-	public class SettingsActivity : PreferenceActivity, Android.Views.View.IOnClickListener
+    public class SettingsActivity : PreferenceActivity, Android.Views.View.IOnClickListener
 	{
 
 		private Toolbar actionbar;
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
+
 			AddPreferencesFromResource(Resource.Xml.preferences_general);
 			actionbar.Title = Title;
 		}
